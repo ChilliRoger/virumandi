@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  padding-top: 60px;
+}
+
+input, button {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: #3468eb;
+  color: white;
+  cursor: pointer;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.bento-box {
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 16px;
+}
