@@ -13,6 +13,21 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Check if token is missing and redirect to login
+  if (!token) {
+    return (
+      <div className={styles.container}>
+        <div className={styles.error}>
+          <strong>Authentication Required:</strong> No token found. Please log in with GitHub.
+          <br /><br />
+          <a href="http://localhost:3001/auth/login" style={{ color: '#3468eb', textDecoration: 'underline' }}>
+            Click here to log in
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   async function analyze() {
     if (!repoUrl.trim()) {
       setError("Please enter a repository URL");
@@ -78,6 +93,7 @@ export default function Dashboard() {
           onKeyPress={handleKeyPress}
           placeholder="https://github.com/username/repository"
           disabled={loading}
+          title="Enter a GitHub repository URL (with or without .git)"
         />
         <button 
           className={styles.button} 

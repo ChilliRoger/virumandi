@@ -2,13 +2,14 @@ import axios from "axios";
 
 export async function analyzeRepo(url, token) {
   try {
-    // Validate URL
-    const urlPattern = /^https?:\/\/(www\.)?github\.com\/[\w-]+\/[\w.-]+\/?$/;
-    if (!urlPattern.test(url.replace(/\/$/, ''))) {
+    // Validate URL and clean it
+    const cleanUrl = url.trim().replace(/\.git$/, '').replace(/\/$/, '');
+    const urlPattern = /^https?:\/\/(www\.)?github\.com\/[\w-]+\/[\w.-]+$/;
+    if (!urlPattern.test(cleanUrl)) {
       throw new Error("Invalid GitHub repository URL");
     }
 
-    const parts = url.replace(/\/$/, '').split("/");
+    const parts = cleanUrl.split("/");
     const owner = parts[3];
     const repo = parts[4];
 
