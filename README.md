@@ -196,6 +196,4 @@ MIT
 
 Pull requests are welcome! For major changes, please open an issue first.
 
-## Author
 
-Built with ❤️ using Next.js and Express
